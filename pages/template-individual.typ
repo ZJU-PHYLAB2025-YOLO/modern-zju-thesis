@@ -6,7 +6,7 @@
   outlined: false,
   indent-first-par: true,
   titlelevel: 2,
-  bodytext-settings: (size: 字号.四号),
+  bodytext-settings: (size: 12pt),
   pagetitle,
   s,
 ) = {
