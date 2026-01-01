@@ -35,22 +35,15 @@
 
     set text(weight: "bold", font: 字体.仿宋)
 
-    align(right)[
-      涉密论文 $square$ #h(1em) 公开论文 $square$ #h(8em)
-    ]
 
     set align(center)
 
 
     v(22pt)
+    image("../assets/zju-emblem.svg", width: page.width * 0.25)
+
     image("../assets/zju-name.svg", width: page.width * 0.5)
-    v(2pt)
-
-    text(size: 字号.小一, font: 字体.黑体, spacing: 50%)[本 科 生 毕 业 论 文<mzt:no-header-footer>]
-
-    image("../assets/zju-emblem.svg", width: page.width * 0.17)
-
-    v(20pt)
+    v(25pt)
 
     let numspacing = if info.title.len() <= 2 {
       2
@@ -61,13 +54,12 @@
     }
 
     block(
-      width: 70%,
       [
-        #set text(size: 字号.三号)
+        #set text(size: 14pt)
         #grid(
-          columns: (0.5fr, 1fr),
+          columns: (5.5em, 23em),
           align: (start, center),
-          rows: 1em,
+          rows: 1.2em,
           stroke: (x, y) => (
             bottom: if x == 1 {
               stoke-width
@@ -76,7 +68,7 @@
             },
           ),
           row-gutter: row-gutter,
-          "题目", info.title.first(),
+          text[题目<mzt:no-header-footer>], info.title.first(),
           ..info.title.slice(1).map(v => (none, v)).flatten(),
           ..range(0, numspacing)
             .map(_ => (
@@ -84,11 +76,8 @@
               grid.cell(stroke: none)[],
             ))
             .flatten(),
-          "学生姓名", info.author,
-          "学生学号", info.student-id,
+          ..info.author,
           "指导教师", info.supervisor,
-          "年级与专业", info.grade + info.major,
-          "所在学院", info.department,
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
           "递交日期", info.submit-date,
         )

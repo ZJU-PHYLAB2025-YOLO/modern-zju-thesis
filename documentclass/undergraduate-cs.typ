@@ -43,11 +43,6 @@
     header: header(
       left: context {
         if not calc.even(here().page()) {
-          "浙江大学本科生毕业论文"
-        }
-      },
-      right: context {
-        if calc.even(here().page()) {
           document.title
         }
       },
